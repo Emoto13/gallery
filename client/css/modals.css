@@ -1,0 +1,118 @@
+#create-modal,
+#merge-modal,
+#upload-modal,
+#delete-modal,
+#modify-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+  background-color: white;
+  width: 300px;
+  max-width: 60%;
+  height: 400px;
+}
+
+#merge-modal {
+  height: 500px;
+}
+
+#upload-modal {
+  width: 350px;
+  height: 200px;
+}
+
+#delete-modal {
+  width: 350px;
+  height: 200px;
+}
+
+#modify-modal {
+  height: 330px;
+}
+
+.modal-header {
+  background-color: #333;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
+
+.modal-body {
+  padding: 10px 15px;
+}
+
+#basic-modal {
+  top: -3px;
+  right: 17px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 9;
+}
+
+#album-creation-form {
+    height: 450px;
+}
+
+#album-creation-form .modal-form {
+    width: 270px;
+    max-width: 90%;
+    height: 25px;
+    margin-bottom: 7px;
+    border: solid 1px #999;
+}
+
+#album-creation-form #albums {
+  height: 70px;
+}
+
+#album-creation-form #description {
+  height: 60px;
+}
+
+#modify-details-form .modal-form {
+    width: 270px;
+    max-width: 90%;
+    height: 25px;
+    margin-bottom: 7px;
+    border: solid 1px #999;
+}
+
+#modify-details-form #description {
+  height: 60px;
+}
