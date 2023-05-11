@@ -1,6 +1,8 @@
 <?php
-include ("../config.php");
-$configs = new Config();
+    // TO BE DEPRECATED. DON'T USE.
+
+    include_once("../config.php");
+    $configs = new Config();
 
     # create connection
     $conn = mysqli_connect($configs->SERVER_NAME, $configs->DB_USERNAME, $configs->DB_PASSWORD, $configs->DB_NAME);
@@ -41,3 +43,5 @@ $configs = new Config();
         }
         mysqli_stmt_close($imageUpdateStatement);
     }
+
+?>

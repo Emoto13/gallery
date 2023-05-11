@@ -11,5 +11,8 @@ class Config
     public $DB_NAME = "web_gallery";
     public $DB_USERNAME = "root";
     public $DB_PASSWORD = "";
+    public $IMAGE_DIR_PATH = "/Applications/XAMPP/htdocs/gallery/server/images/";
+    public $CLIENT_DIR_PATH = "/gallery/client/";
+
 }
 ?>

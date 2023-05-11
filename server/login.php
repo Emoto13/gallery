@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['login-submit'])){
-    require 'dbhandler.php';
+    require_once('dbhandler.php');
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -8,11 +8,13 @@ if (isset($_POST['login-submit'])){
     # Check if any of the fields is empty
     if (empty($username) || empty($password)){
         header("Location: ../client/index.php?error=emptyfields");
-        exit();
+        return;
     }
+    
     else {
         # Check matching username and password
         $sql = "SELECT * FROM users WHERE username=?";
+        
         $statement = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($statement, $sql)) {
             header("Location: ../client/index.php?error=sqlerror");
