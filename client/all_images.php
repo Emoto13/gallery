@@ -8,7 +8,7 @@
     <?php
     require "../server/dbhandler.php";
     if (isset($_SESSION['userId'])){
-        $query = "SELECT * FROM images WHERE id IN (SELECT image_id FROM image_instances WHERE user_id=?) ORDER BY
+        $query = "SELECT * FROM images WHERE author_id=? ORDER BY
         timestamp DESC";
         $statement = mysqli_stmt_init($conn);
 

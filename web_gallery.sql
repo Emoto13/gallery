@@ -51,73 +51,40 @@ CREATE TABLE `album_images` (
 --
 
 INSERT INTO `album_images` (`id`, `image_instance_id`, `album_id`) VALUES
-(1, 9, 1),
-(2, 8, 1),
-(3, 3, 1),
-(4, 5, 2),
-(5, 4, 2);
+(1, 15, 1),
+(2, 16, 1),
+(3, 17, 1),
+(4, 18, 2),
+(5, 19, 2);
 
 -- --------------------------------------------------------
 
 --
 -- Структура на таблица `images`
 --
-
 CREATE TABLE `images` (
+  `id` int(11) NOT NULL,
   `path` varchar(2048) NOT NULL,
   `timestamp` timestamp NULL DEFAULT current_timestamp(),
-  `device` varchar(255) DEFAULT NULL,
-  `filesize` float DEFAULT NULL,
-  `number_instances` int(11) NOT NULL DEFAULT 0,
-  `id` int(11) NOT NULL,
-  `original_filename` varchar(255) NOT NULL,
-  `author` varchar(255) DEFAULT NULL,
+  `author_id` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `gps_longitude` varchar(12) DEFAULT NULL,
-  `gps_latitude` varchar(12) DEFAULT NULL,
   `address` varchar(512) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Схема на данните от таблица `images`
 --
 
-INSERT INTO `images` (`path`, `timestamp`, `device`, `filesize`, `number_instances`, `id`, `original_filename`, `author`, `description`, `gps_longitude`, `gps_latitude`, `address`) VALUES
-('Chrysanthemum_5f174d9829225.jpg', '2023-04-14 11:59:26', NULL, 879394, 1, 15, 'Chrysanthemum.jpg', '', '', NULL, NULL, NULL),
-('Hydrangeas_5f174da2e5207.jpg', '2023-04-24 14:41:53', NULL, 595284, 1, 16, 'Hydrangeas.jpg', '', '', NULL, NULL, NULL),
-('Desert_5f174dc478022.jpg', '2023-04-14 11:59:26', NULL, 845941, 1, 17, 'Desert.jpg', '', '', NULL, NULL, NULL),
-('Penguins_5f174dcd791c4.jpg', '2012-04-22 03:07:31', NULL, 777835, 1, 18, 'Penguins.jpg', '', '', NULL, NULL, NULL),
-('Koala_5f174dd61ec81.jpg', '2023-04-22 09:32:43', NULL, 780831, 1, 19, 'Koala.jpg', '', '', NULL, NULL, NULL),
-('Lighthouse_5f174ddfea854.jpg', '2022-04-11 09:32:51', NULL, 561276, 1, 20, 'Lighthouse.jpg', '', '', NULL, NULL, NULL),
-('Tulips_5f174de637144.jpg', '2022-04-07 09:33:11', NULL, 620888, 1, 21, 'Tulips.jpg', '', '', NULL, NULL, NULL),
-('IMG_20120725_112345_5f1de393785da.jpg', '2022-04-25 09:23:44', NULL, 962498, 1, 22, 'IMG_20120725_112345.jpg', '', '', '2.3374627', '48.8470886', 'Jardin du Luxembourg, Place Edmond Rostand, 75006 Paris, France');
+INSERT INTO `images` (`path`, `timestamp`, `id`, `author_id`, `description`, `address`) VALUES
+('Chrysanthemum_5f174d9829225.jpg', '2023-04-14 11:59:26', 15, 1, 'Chrysanthemum', ''),
+('Hydrangeas_5f174da2e5207.jpg', '2023-04-24 14:41:53', 16, 1, 'Hydrangeas', ''),
+('Desert_5f174dc478022.jpg', '2023-04-14 11:59:26', 17, 1, 'Desert', ''),
+('Penguins_5f174dcd791c4.jpg', '2012-04-22 03:07:31', 18, 1, 'Penguins', ''),
+('Koala_5f174dd61ec81.jpg', '2023-04-22 09:32:43', 19, 1, 'Koala', ''),
+('Lighthouse_5f174ddfea854.jpg', '2022-04-11 09:32:51', 20, 1, 'Lighthouse', ''),
+('Tulips_5f174de637144.jpg', '2022-04-07 09:33:11', 21, 1, 'Tulips', ''),
+('IMG_20120725_112345_5f1de393785da.jpg', '2022-04-25 09:23:44', 22, 1, '', 'Jardin du Luxembourg, Place Edmond Rostand, 75006 Paris, France');
 
 -- --------------------------------------------------------
-
---
--- Структура на таблица `image_instances`
---
-
-CREATE TABLE `image_instances` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `image_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Схема на данните от таблица `image_instances`
---
-
-INSERT INTO `image_instances` (`id`, `user_id`, `image_id`) VALUES
-(3, 1, 15),
-(4, 1, 16),
-(5, 1, 17),
-(6, 1, 18),
-(7, 1, 19),
-(8, 1, 20),
-(9, 1, 21),
-(10, 1, 22);
-
 -- --------------------------------------------------------
 
 --
@@ -137,7 +104,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `date_registered`) VALUES
-(1, 'test_user', 'emilian.spassov@gmail.com', '$2y$10$iRUbwBh/Q.lpoh9k4uRmG.wiXDdyh3bg7WfNdfcZhhG0i.cZwrt.C', '2020-06-10');
+(1, 'test_user', 'emilian.spassov@gmail.com', '$2y$10$iRUbwBh/Q.lpoh9k4uRmG.wiXDdyh3bg7WfNdfcZhhG0i.cZwrt.C', '2022-06-10');
 
 --
 -- Indexes for dumped tables
@@ -164,14 +131,6 @@ ALTER TABLE `album_images`
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `imagePath` (`path`) USING HASH;
-
---
--- Indexes for table `image_instances`
---
-ALTER TABLE `image_instances`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `image_id` (`image_id`);
 
 --
 -- Indexes for table `users`
@@ -204,12 +163,6 @@ ALTER TABLE `images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `image_instances`
---
-ALTER TABLE `image_instances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -230,14 +183,7 @@ ALTER TABLE `albums`
 --
 ALTER TABLE `album_images`
   ADD CONSTRAINT `album_images_ibfk_1` FOREIGN KEY (`album_id`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `album_images_ibfk_2` FOREIGN KEY (`image_instance_id`) REFERENCES `image_instances` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ограничения за таблица `image_instances`
---
-ALTER TABLE `image_instances`
-  ADD CONSTRAINT `image_instances_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `image_instances_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `images` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `album_images_ibfk_2` FOREIGN KEY (`image_instance_id`) REFERENCES `images` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
