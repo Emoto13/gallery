@@ -32,8 +32,6 @@
                                     <label for="date-taken">Date taken:</label><br>
                                     <input class="modal-form" name="date-taken" type="date" min="1970-01-0" max='.date
                                     ('Y-m-d').'><br>
-                                    <label for="author">Author:</label><br>
-                                    <input class="modal-form" name="author" type="text"><br>
                                     <label for="description">Description:</label><br>
                                     <textarea class="modal-form" id="description" name="description" type="text"></textarea><br>
                                     <input class="form-button" type="submit" onclick="closeModifyModal()"
