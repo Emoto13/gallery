@@ -13,15 +13,18 @@
 
     echo '<main class="container">';
     require "../server/dbhandler.php";
-    if (isset($_SESSION['userId'])) {
-        echo '<h1>Welcome to your own Image Gallery!</h1>
-            <p>You can now upload new images or view your existing ones. :)</p>';
-        echo '<form action="../server/upload.php" method="POST" enctype="multipart/form-data">
-                  <input type="file" name="file" required style="margin:20px 0px;"/>
-                  <div>
+    if (!isset($_SESSION['userId'])) {
+        echo '<h1>Welcome to Image Gallery!</h1>
+            <p>Please log into your profile or register to be able to upload pictures and generate galleries!</p>';
+        return;
+    }
+    echo '<h1>Welcome to your own Image Gallery!</h1>
+        <p>You can now upload new images or view your existing ones. :)</p>';
+    echo '<form action="../server/upload.php" method="POST" enctype="multipart/form-data">
+              <input type="file" name="file" required style="margin:20px 0px;"/>
+              <div>
                   <button type="submit" name="submit" class="form-button">Upload your image</button>
                 </div>
-
               </form>';
         //for ($i = 1; $i <= 50; $i++) {
         //    $todayYearsAgo = date("Y-m-d", strtotime("-$i years"));
@@ -85,11 +88,7 @@
 
         //    }
         //}
-    }
-    else {
-        echo '<h1>Welcome to Image Gallery!</h1>
-            <p>Please log into your profile or register to be able to upload pictures and generate galleries!</p>';
-    }
+
     echo '</main>';
 ?>
 

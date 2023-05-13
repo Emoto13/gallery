@@ -11,8 +11,8 @@ var validateConfirmPassword = function () {
     document.getElementById("message").style.color = "red";
     document.getElementById("message").innerHTML = "Passwords not matching";
   } else {
-    pwdField.style.border = "1px solid #333";
-    pwdConfirm.style.border = "1px solid #333";
+    pwdField.style.border = "1px solid #003e8f";
+    pwdConfirm.style.border = "1px solid #003e8f";
     document.getElementById("message").innerHTML = "";
   }
 };

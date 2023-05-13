@@ -35,12 +35,12 @@
 }
 
 .modal-header {
-  background-color: #333;
+  background-color: #003e8f;
   padding: 10px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #003e8f;
 }
 
 .modal-header .title {
