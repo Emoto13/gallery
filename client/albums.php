@@ -18,14 +18,7 @@
             <span class="close" id="basic-modal" onclick="closeModal()">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="album-creation-form" method="post" action="../server/create_album.php"
-            enctype="multipart/form-data">
-                <label for="start-date">Start date:</label><br>
-                <input class="modal-form" name="start-date" required type="date" min="1970-01-01" max='<?php echo
-                 date('Y-m-d');?>'><br>
-                <label for="end-date">End date:</label><br>
-                <input class="modal-form" name="end-date" required type="date" min="1970-01-01"
-                    max='<?php echo date('Y-m-d');?>'><br>
+            <form id="album-creation-form" method="post" action="../server/create_album.php" enctype="multipart/form-data">
                 <label for="album-name">Album name:</label><br>
                 <input class="modal-form" name="album-name" required type="text"><br>
                 <label for="description">Description:</label><br>
@@ -42,12 +35,6 @@
         <div class="modal-body">
             <form id="album-creation-form" method="post" action="../server/merge_albums.php"
                 enctype="multipart/form-data">
-                <label for="start-date">Start date merge criteria:</label><br>
-                <input class="modal-form" name="start-date" type="date" min="1970-01-01" max='<?php echo date
-                ('Y-m-d');?>'><br>
-                <label for="end-date">End date merge criteria:</label><br>
-                <input class="modal-form" name="end-date" type="date" min="1970-01-01" max='<?php echo date
-                ('Y-m-d');?>'><br>
                 <label for="albums">Choose albums to merge:</label><br>
                 <select class="modal-form" name="albums[]" id="albums" multiple>
                     <?php

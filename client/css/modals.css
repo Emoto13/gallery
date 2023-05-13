@@ -10,18 +10,20 @@
   transition: 200ms ease-in-out;
   z-index: 10;
   background-color: white;
-  width: 300px;
+  width: 20em;
   max-width: 60%;
-  height: 400px;
+}
+
+#create-modal {
+  height: 17em;
 }
 
 #merge-modal {
-  height: 500px;
+  height: 23em;
 }
 
 #upload-modal {
-  width: 350px;
-  height: 200px;
+  height: 16em;
 }
 
 #delete-modal {
@@ -59,7 +61,7 @@
 }
 
 .modal-body {
-  padding: 10px 15px;
+  padding: 10px;
 }
 
 #basic-modal {
