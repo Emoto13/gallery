@@ -6,9 +6,9 @@ body {
 }
 
 .container {
-  width: 60em;
+  width: 55em;
   overflow: auto;
   background-color: white;
-  margin: 1rem auto;
-  padding: 5rem;
+  margin: 1em auto;
+  padding: 3em;
 }

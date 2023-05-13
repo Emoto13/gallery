@@ -74,12 +74,11 @@
             # Everything went well. Creating the user
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $date_registered = date("Y-m-d");
-        
+
         mysqli_stmt_bind_param($insertStatement, "ssss", $username, $email, $hashedPassword, $date_registered);
         mysqli_stmt_execute($insertStatement);
         mysqli_stmt_store_result($insertStatement);
-
-            header("Location: ../client/index.php?success=register");
+        header("Location: ../client/index.php?success=register");
 
         mysqli_stmt_close($statement);
         mysqli_stmt_close($emailStatement);
