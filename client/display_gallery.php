@@ -1,26 +1,30 @@
 <?php
+    function create_delete_modal($id=0) {
+        echo '<div class="delete-modal" id="delete-modal-'.$id.'">
+                <div class="modal-header">
+                    <div class="title">Delete image</div>
+                    <span class="close" id="basic-modal" onclick="closeDeleteModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" enctype="multipart/form-data" action="../server/delete_image.php">
+                        <p>Are you sure you want to delete this image?</p>
+                        <input class="modal-form" name="image-id" value="'.$id.'" type="hidden">
+                        <div>
+                            <button type="submit" name="submit" onclick="closeDeleteModal()"
+                            class="form-button">Yes</button>
+                            <button name="no" onclick="closeDeleteModal('.$id.')" class="form-button">No</button>
+                        </div>
+                    </form>
+                </div>
+           </div>';
+    }
+
+
     function display_gallery($result) {
-        $number_of_pictures = mysqli_num_rows($result);
-        $picture_index = 0;
         $modal_gallery = '<div id="gallery-modal">
              <span class="close" onclick="closeGalleryModal()">&times;</span>';
 
-        echo '<div id="delete-modal">
-                            <div class="modal-header">
-                                <div class="title">Delete image</div>
-                                <span class="close" id="basic-modal" onclick="closeDeleteModal()">&times;</span>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" enctype="multipart/form-data">
-                                    <p>Are you sure you want to delete this image?</p>
-                                    <div>
-                                        <button type="submit" name="submit" onclick="closeDeleteModal()"
-                                        class="form-button">Yes</button>
-                                        <button name="no" onclick="closeDeleteModal()" class="form-button">No</button>
-                                    </div>
-                                </form>
-                            </div>
-                       </div>';
+
 
         echo '<div id="modify-modal">
                             <div class="modal-header">
@@ -42,11 +46,20 @@
                             </div>
                        </div>';
 
+        $picture_index = 0;
+        $number_of_pictures = mysqli_num_rows($result);
         while($row = mysqli_fetch_assoc($result)){
+            $id = $row['id'];
+            if(!empty($id)) {
+                create_delete_modal($id);
+            }
+            
             echo '<img class="small-image" onclick="openGalleryModal(); currentSlide('.($picture_index + 1).')" src="../server/images/'.$row['path'].'">
-                <img class="delete" onclick="openDeleteModal()" src="./images/delete.png">
+                <img class="delete" onclick="openDeleteModal('.$id.')" src="./images/delete.png">
                 <img class="modify" onclick="openModifyModal()" src="./images/modify.png">';
+
             $picture_data = '';
+            
             if(!empty($row['timestamp'])){
                 $picture_data .= 'Date: '.date('F j, Y', strtotime($row['timestamp'])).'<br />';
             }
@@ -56,6 +69,10 @@
             if(!empty($row['description'])){
                 $picture_data .= ' Description: '.$row['description'].'<br />';
             }
+            if(!empty($row['id'])) {
+                create_delete_modal($row['id']);
+            }
+            
             $modal_gallery .= '
                 <div class="slides">
                     <div class="image-slide-part">

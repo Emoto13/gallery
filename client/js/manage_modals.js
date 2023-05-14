@@ -45,15 +45,15 @@ function closeUploadModal() {
 }
 
 function openDeleteModal(id) {
-  document.getElementById("delete-modal").style.transform =
+  document.getElementById(`delete-modal-${id}`).style.transform =
     "translate(-50%, -50%) scale(1, 1)";
   overlay.classList.add("active");
   //localStorage.setItem(currentImageId, id);
 
 }
 
-function closeDeleteModal() {
-  document.getElementById("delete-modal").style.transform =
+function closeDeleteModal(id) {
+  document.getElementById(`delete-modal-${id}`).style.transform =
     "translate(-50%, -50%) scale(0, 0)";
   overlay.classList.remove("active");
   //localStorage.removeItem(currentImageId);

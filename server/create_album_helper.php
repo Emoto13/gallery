@@ -1,6 +1,6 @@
 <?php 
 
-    function doesAlbumExist($conn) {
+    function does_album_exist($conn) {
         $query_check_album_name = "SELECT * FROM albums WHERE name=? AND userId=?";
         $statement_check_album_name = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($statement_check_album_name, $query_check_album_name)) {
@@ -14,20 +14,20 @@
         return $number_of_albums > 0;
     }
  
-    function createAlbum($conn, $album_name = "", $album_description = "", $userId = "") {
+    function create_album($conn, $album_name = "", $album_description = "", $user_id = "") {
         if ($album_name === "" || $album_name === NULL) {
             header("Location: ../client/albums.php?error=albumnameerror");
             return;
         } else if ($album_description === "" || $album_description === NULL) {
             header("Location: ../client/albums.php?error=albumnameerror");
             return;
-        } else if ($userId === "" || $userId === NULL) {
+        } else if ($user_id === "" || $user_id === NULL) {
             header("Location: ../client/albums.php?error=albumnameerror");
             return;
         }
          
         require "../client/header.php";
-        if (doesAlbumExist($conn)) {
+        if (does_album_exist($conn)) {
             header("Location: ../client/albums.php?error=albumnameerror");
             return;
         }
@@ -39,7 +39,7 @@
             return;
         }
     
-        mysqli_stmt_bind_param($insert_album_statement, "ssi", $album_name, $album_description, $userId);
+        mysqli_stmt_bind_param($insert_album_statement, "ssi", $album_name, $album_description, $user_id);
         mysqli_stmt_execute($insert_album_statement);
         return mysqli_insert_id($conn);
     }

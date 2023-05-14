@@ -1,3 +1,37 @@
 <?php
-    // TODO: Add logic for deleting single image
+    include_once("../config.php");
+    session_start();
+
+    function delete_image($conn=null) {
+        if (!isset($_SESSION['userId'])){
+            echo "No logged user found";
+            return -1;
+        }    
+
+
+
+        $delete_image_query = "DELETE FROM images WHERE id=? AND author_id=?";
+        $delete_image_statement = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($delete_image_statement, $delete_image_query)) {
+            header("Location: ../client/index.php?error=sqlerror");
+            return -1;
+        }
+
+        mysqli_stmt_bind_param($delete_image_statement, "ii", $_POST['image-id'], $_SESSION['userId']);
+        mysqli_stmt_execute($delete_image_statement);
+        return mysqli_insert_id($conn);
+    }
+
+
+
+    $configs = new Config();
+    $conn = mysqli_connect($configs->SERVER_NAME, $configs->DB_USERNAME, $configs->DB_PASSWORD, $configs->DB_NAME);
+
+    $result = delete_image($conn);
+    if (!$result) {
+        header("Location: ../client/index.php?error=sqlerror");
+        return;
+    }
+
+    mysqli_close($conn);
 ?>

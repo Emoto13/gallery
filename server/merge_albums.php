@@ -15,7 +15,7 @@
     $configs = new Config();
     $conn = mysqli_connect($configs->SERVER_NAME, $configs->DB_USERNAME, $configs->DB_PASSWORD, $configs->DB_NAME);
 
-    $album_id = createAlbum($conn, $_POST['album-name'], $_POST['description'], $_SESSION["userId"]);
+    $album_id = create_album($conn, $_POST['album-name'], $_POST['description'], $_SESSION["userId"]);
     if (!$album_id) {
         header("Location: ../client/index.php?error=albumnotcreated");
         return;
