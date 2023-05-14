@@ -50,9 +50,6 @@
         $number_of_pictures = mysqli_num_rows($result);
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
-            if(!empty($id)) {
-                create_delete_modal($id);
-            }
             
             echo '<img class="small-image" onclick="openGalleryModal(); currentSlide('.($picture_index + 1).')" src="../server/images/'.$row['path'].'">
                 <img class="delete" onclick="openDeleteModal('.$id.')" src="./images/delete.png">
@@ -69,8 +66,8 @@
             if(!empty($row['description'])){
                 $picture_data .= ' Description: '.$row['description'].'<br />';
             }
-            if(!empty($row['id'])) {
-                create_delete_modal($row['id']);
+            if(!empty($id)) {
+                create_delete_modal($id);
             }
             
             $modal_gallery .= '
