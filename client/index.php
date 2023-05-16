@@ -5,11 +5,15 @@
 <?php
     include_once("display_all_images.php");
 
-    if (isset($_GET['success'])){
+    if (isset($_GET['success'])) {
         if ($_GET['success'] == 'register') {
             echo '<div class="success-msg">You have successfully created your profile. Please login.</div>';
         } else if ($_GET['success'] == 'uploaded') {
             echo '<div class="success-msg">You have successfully uploaded your image.</div>';
+        } else if ($_GET['success'] == 'modified') {
+            echo '<div class="success-msg">You have successfully modified your image.</div>';
+        } else if ($_GET['success'] == 'deleted') {
+            echo '<div class="success-msg">You have successfully deleted your image.</div>';
         }
     }
 

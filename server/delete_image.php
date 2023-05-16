@@ -27,11 +27,7 @@
     $configs = new Config();
     $conn = mysqli_connect($configs->SERVER_NAME, $configs->DB_USERNAME, $configs->DB_PASSWORD, $configs->DB_NAME);
 
-    $result = delete_image($conn);
-    if (!$result) {
-        header("Location: ../client/index.php?error=sqlerror");
-        return;
-    }
-
+    delete_image($conn);
+    header("Location: ../client/index.php?success=deleted");
     mysqli_close($conn);
 ?>

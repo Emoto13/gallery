@@ -19,32 +19,32 @@
            </div>';
     }
 
+    function create_modify_modal($id=0, $description="") {
+        echo '<div id="modify-modal">
+                <div class="modal-header">
+                    <div class="title">Modify image details</div>
+                    <span class="close" id="basic-modal" onclick="closeModifyModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="modify-details-form" method="POST" enctype="multipart/form-data" action="../server/modify_image.php">
+                        <input class="modal-form" name="image-id" value="'.$id.'" type="hidden">
+                        <label for="description">Description:</label><br>
+                        <textarea class="modal-form" id="description" name="description" type="text">'.$description.'</textarea><br>
+                        <input class="form-button" type="submit" onclick="closeModifyModal()"
+                        value="Modify">
+                        <input class="form-button" type="submit" onclick="closeModifyModal()"
+                        value="Cancel">
+                    </form>
+                </div>
+            </div>';
+    }
+
+
 
     function display_gallery($result) {
         $modal_gallery = '<div id="gallery-modal">
              <span class="close" onclick="closeGalleryModal()">&times;</span>';
 
-
-
-        echo '<div id="modify-modal">
-                            <div class="modal-header">
-                                <div class="title">Modify image details</div>
-                                <span class="close" id="basic-modal" onclick="closeModifyModal()">&times;</span>
-                            </div>
-                            <div class="modal-body">
-                                <form id="modify-details-form" method="POST" enctype="multipart/form-data">
-                                    <label for="date-taken">Date taken:</label><br>
-                                    <input class="modal-form" name="date-taken" type="date" min="1970-01-0" max='.date
-                                    ('Y-m-d').'><br>
-                                    <label for="description">Description:</label><br>
-                                    <textarea class="modal-form" id="description" name="description" type="text"></textarea><br>
-                                    <input class="form-button" type="submit" onclick="closeModifyModal()"
-                                    value="Modify">
-                                    <input class="form-button" type="submit" onclick="closeModifyModal()"
-                                    value="Cancel">
-                                </form>
-                            </div>
-                       </div>';
 
         $picture_index = 0;
         $number_of_pictures = mysqli_num_rows($result);
@@ -53,7 +53,7 @@
             
             echo '<img class="small-image" onclick="openGalleryModal(); currentSlide('.($picture_index + 1).')" src="../server/images/'.$row['path'].'">
                 <img class="delete" onclick="openDeleteModal('.$id.')" src="./images/delete.png">
-                <img class="modify" onclick="openModifyModal()" src="./images/modify.png">';
+                <img class="modify" onclick="openModifyModal('.$id.')" src="./images/modify.png">';
 
             $picture_data = '';
             
@@ -67,6 +67,7 @@
                 $picture_data .= ' Description: '.$row['description'].'<br />';
             }
             if(!empty($id)) {
+                create_modify_modal($id, );
                 create_delete_modal($id);
             }
             
@@ -80,7 +81,7 @@
                         <div class="data">'.$picture_data.'</div>
                     </div>
                 </div>';
-                $picture_index = $picture_index + 1;
+            $picture_index = $picture_index + 1;
         }
 
         $modal_gallery .= '<a class="previous" onclick="plusSlides(-1)">&#10094;</a>
