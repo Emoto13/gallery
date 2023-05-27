@@ -10,10 +10,19 @@ nav ul {
   padding: 0;
   overflow: hidden;
   background-color: #003e8f;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav ul li {
   float: left;
+  flex: 1;
+  text-align: center;
+}
+
+img {
+  width: 40px; 
+  height: 40px; 
 }
 
 nav ul li a {
@@ -40,6 +49,7 @@ nav ul li a:hover {
 
 .form-input {
   padding: 0.3rem;
+  margin-top: 4%;
 }
 
 .form-button {

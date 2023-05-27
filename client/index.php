@@ -37,7 +37,3 @@
     display_all_images(true);
     echo '</main>';
 ?>
-
-<?php 
-    require "footer.php";
-?>

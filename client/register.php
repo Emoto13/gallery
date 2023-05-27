@@ -41,7 +41,3 @@
         <button type="submit" name="register-submit" class="form-button">Register</button>
     </form>
 </main>
-
-<?php 
-    require "footer.php";
-?>

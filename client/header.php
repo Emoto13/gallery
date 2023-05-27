@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="css/nav.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/register.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/modals.css">
     <link rel="stylesheet" type="text/css" href="css/gallery.css">
     <link rel="stylesheet" type="text/css" href="css/other.css">
@@ -37,22 +36,19 @@
     <header>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php"><img src="images/home.png" alt=Home></a></li>
                 <?php
                     if (isset($_SESSION['userId'])) {
-                        echo '<li><a href="albums.php">Albums</a></li>
-                        <li><a href="all_images.php">All Images</a></li>
-                        <li><a href="profile.php">Profile</a></li>
+                        echo '<li><a href="albums.php"><img src="images/album.png" alt=Album></a></li>
+                        <li><a href="all_images.php"><img src="images/all_images.jpg" alt="All images"></a></li>
+                        <li><a href="profile.php"><img src="images/profile_icon.png" alt=Profile></a></li>
                         <li id="inline-login">';
-                    } 
-                ?>
-                <?php
-                    if (isset($_SESSION['userId'])) {     
+                        
                         echo "
                         <form action='../server/logout.php' method='post'>
-                            <button type='submit' name='logout-submit' class='form-button bolded'>Logout</button>
+                            <button type='submit' name='logout-submit' class='form-button bolded'><img src='images/log_out.png' alt='Log out'></button>
                         </form>";
-                    } 
+                    }
                     else {
                         echo "
                         <form action='../server/login.php' method='post'>
@@ -66,3 +62,5 @@
                 </li>
         </nav>
     </header>
+</body>
+    
