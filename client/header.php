@@ -36,17 +36,17 @@
     <header>
         <nav>
             <ul>
-                <li><a href="index.php"><img src="images/home.png" alt=Home></a></li>
+                <li><a href="index.php"><img src="images/home.png" class="icon" alt=Home></a></li>
                 <?php
                     if (isset($_SESSION['userId'])) {
-                        echo '<li><a href="albums.php"><img src="images/album.png" alt=Album></a></li>
-                        <li><a href="all_images.php"><img src="images/all_images.jpg" alt="All images"></a></li>
-                        <li><a href="profile.php"><img src="images/profile_icon.png" alt=Profile></a></li>
+                        echo '<li><a href="albums.php"><img src="images/album.png" class="icon" alt=Album></a></li>
+                        <li><a href="all_images.php"><img src="images/all_images.jpg" class="icon" alt="All images"></a></li>
+                        <li><a href="profile.php"><img src="images/profile_icon.png" class="icon"  alt=Profile></a></li>
                         <li id="inline-login">';
                         
                         echo "
                         <form action='../server/logout.php' method='post'>
-                            <button type='submit' name='logout-submit' class='form-button bolded'><img src='images/log_out.png' alt='Log out'></button>
+                            <button type='submit' name='logout-submit' class='form-button bolded'><img src='images/log_out.png' class='icon' alt='Log out'></button>
                         </form>";
                     }
                     else {
