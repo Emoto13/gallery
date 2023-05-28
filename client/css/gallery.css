@@ -48,6 +48,13 @@
     cursor: pointer;
 }
 
+.image-options {
+  display: inline;
+  position: relative;
+  right: 10.5%;
+  bottom: 1.5em;
+}
+
 /* The Modal (background) */
 #gallery-modal {
   position: fixed;
