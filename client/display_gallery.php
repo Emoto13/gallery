@@ -67,7 +67,7 @@
                 $picture_data .= ' Description: '.$row['description'].'<br />';
             }
             if(!empty($id)) {
-                create_modify_modal($id, );
+                create_modify_modal($id, $row['description']);
                 create_delete_modal($id);
             }
             
