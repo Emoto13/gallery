@@ -29,15 +29,11 @@
     echo '<form action="../server/upload.php" method="POST" enctype="multipart/form-data">
               <input type="file" name="file" required style="margin:20px 0px;"/>
               <div>
-                  <button type="submit" name="submit" class="form-button">Upload your image</button>
+                  <button type="submit" name="submit" class="form-button">Upload</button>
                 </div>
               </form>';
     echo '<hr />';
     echo '<h3>Upload awesome images like these:</h3>';  
     display_all_images(true);
     echo '</main>';
-?>
-
-<?php 
-    require "footer.php";
 ?>

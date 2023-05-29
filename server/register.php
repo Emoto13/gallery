@@ -11,24 +11,18 @@
     $password = $_POST['password'];
     $passwordConfirm = $_POST['password-cnf'];
 
-    # Check if any of the fields is empty
     if (empty($username) || empty($email) || empty($password) || empty($passwordConfirm)){
-        # Redirect back to the registration form
-        # Attach errors + username and email which were already put in
         header("Location: ../client/register.php?error=emptyfields&username=".$username."&email=".$email);
         return;
     }
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        # Attach errors for invalid email
         header("Location: ../client/register.php?error=invalidemail&username=".$username);
         return;
     }
     else if ($password !== $passwordConfirm) {
-        # Attach errors for invalid username
         header("Location: ../client/register.php?error=passwordcheck&email=".$email."&username=".$username);
         return;
     }
-        # Check if user with such username already exists
         $sqlUsername = "SELECT username FROM users WHERE username=?";
         $statement = mysqli_stmt_init($conn);
 
@@ -42,7 +36,6 @@
         $resultCheck = mysqli_stmt_num_rows($statement);
 
         if ($resultCheck > 0) {
-            # If such user exists, return error
             header("Location: ../client/register.php?error=usertaken");
             return;
         }
@@ -64,6 +57,7 @@
             header("Location: ../client/register.php?error=emailtaken&username=".$username);
             return;
         }
+        
         # Otherwise create new record in the DB
         $sqlInsert = "INSERT INTO users (username, email, password, date_registered) VALUES (?, ?, ?, ?)";
         $insertStatement = mysqli_stmt_init($conn);

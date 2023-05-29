@@ -97,7 +97,7 @@
             echo '<div style="display: grid; grid-template-columns: 20% 20% 20% 20%; grid-gap: 7%;">';
             while($row = mysqli_fetch_assoc($result)){
                 echo '<flex style="text-align: center;"><a class="album-name" href="?id='.$row['id'].'&name='.$row['name'].'"><img
-                class="folder" src="./images/folder.png"/>'.$row['name'].'</a></flex> ';
+                class="folder" src="./images/folder.png" /><p>'.$row['name'].'</p></a></flex> ';
             }
             echo '</div>';
         }
@@ -139,7 +139,7 @@
                     method="POST" enctype="multipart/form-data">
                         <input type="file" name="file" required style="margin:20px 0px;"/>
                         <div>
-                            <button type="submit" name="submit" class="form-button">Upload your image</button>
+                            <button type="submit" name="submit" class="form-button">Upload</button>
                         </div>
                     </form>
                 </div>
@@ -150,7 +150,3 @@
 
     ?>
 </main>
-
-<?php 
-    require "footer.php";
-?>

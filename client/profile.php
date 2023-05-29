@@ -4,7 +4,6 @@
 
 <main class="container">
     <?php
-    session_start();
     
     if (!isset($_SESSION['userId'])) {
         echo "You should log in to view this page";
@@ -64,7 +63,3 @@
     mysqli_close($conn);
 ?>
 </main>
-
-<?php
-    require "footer.php";
-?>
