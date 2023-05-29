@@ -7,12 +7,12 @@ CREATE TABLE `albums` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `userId` int(11) NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-INSERT INTO `albums` (`id`, `name`, `description`, `createdAt`, `userId`) VALUES
+INSERT INTO `albums` (`id`, `name`, `description`, `created_at`, `user_id`) VALUES
 (1, 'Test Album', 'This is a test album', '2020-07-21 20:31:34', 1),
 (2, 'Second Test', 'This is another test album', '2020-07-21 20:32:39', 1);
 
@@ -43,14 +43,14 @@ CREATE TABLE `images` (
 
 
 INSERT INTO `images` (`path`, `timestamp`, `id`, `author_id`, `description`, `address`) VALUES
-('Chrysanthemum_5f174d9829225.jpg', '2023-04-14 11:59:26', 15, 1, 'Chrysanthemum', ''),
-('Hydrangeas_5f174da2e5207.jpg', '2023-04-24 14:41:53', 16, 1, 'Hydrangeas', ''),
-('Desert_5f174dc478022.jpg', '2023-04-14 11:59:26', 17, 1, 'Desert', ''),
-('Penguins_5f174dcd791c4.jpg', '2012-04-22 03:07:31', 18, 1, 'Penguins', ''),
-('Koala_5f174dd61ec81.jpg', '2023-04-22 09:32:43', 19, 1, 'Koala', ''),
-('Lighthouse_5f174ddfea854.jpg', '2022-04-11 09:32:51', 20, 1, 'Lighthouse', ''),
-('Tulips_5f174de637144.jpg', '2022-04-07 09:33:11', 21, 1, 'Tulips', ''),
-('IMG_20120725_112345_5f1de393785da.jpg', '2022-04-25 09:23:44', 22, 1, '', 'Jardin du Luxembourg, Place Edmond Rostand, 75006 Paris, France');
+('1225f06e-3999-4f5a-b83f-f78afae41257.jpg', '2023-04-14 11:59:26', 15, 1, 'Cute doggo', ''),
+('29ec0317-5ea6-4c24-9a43-4d2b06f86c00.jpg', '2023-04-24 14:41:53', 16, 1, 'Morning cofee', ''),
+('9f80a9fb-9985-4668-a362-d5529503fb4b.jpg', '2023-04-14 11:59:26', 17, 1, 'Lego', ''),
+('9b643de1-2557-4113-a3b5-66166c739e18.jpg', '2012-04-22 03:07:31', 18, 1, 'Cosmos', ''),
+('8db911c3-3efc-4afa-bf73-9abe69bdf214.jpg', '2023-04-22 09:32:43', 19, 1, 'Eggs', ''),
+('7bc6980f-6454-472f-8ce3-648b0b4479af.jpeg', '2022-04-11 09:32:51', 20, 1, 'Bright idea', ''),
+('6d0567e3-84bb-42ec-b08a-2760b3b25b90.jpg', '2022-04-07 09:33:11', 21, 1, 'Mountains', ''),
+('1352b1a4-4ef6-44b2-bbda-4aa5d4d150d7.jpg', '2022-04-25 09:23:44', 22, 1, '', 'Outside during winter');
 
 
 CREATE TABLE `users` (
@@ -68,7 +68,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `date_registered`) V
 
 ALTER TABLE `albums`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `userId` (`userId`);
+  ADD KEY `user_id` (`user_id`);
 
 
 ALTER TABLE `album_images`
@@ -105,7 +105,7 @@ ALTER TABLE `users`
 
 
 ALTER TABLE `albums`
-  ADD CONSTRAINT `albums_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `albums_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 
 ALTER TABLE `album_images`

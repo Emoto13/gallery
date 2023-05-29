@@ -1,7 +1,7 @@
 <?php
     require "../client/header.php";
 
-    if (!isset($_SESSION['userId'])){
+    if (!isset($_SESSION['user_id'])){
         header("Location: ../client/albums.php?error=dateerror");
         return;
     }
@@ -15,7 +15,7 @@
     $configs = new Config();
     $conn = mysqli_connect($configs->SERVER_NAME, $configs->DB_USERNAME, $configs->DB_PASSWORD, $configs->DB_NAME);
 
-    $album_id = create_album($conn, $_POST['album-name'], $_POST['description'], $_SESSION["userId"]);
+    $album_id = create_album($conn, $_POST['album-name'], $_POST['description'], $_SESSION["user_id"]);
     if (!$album_id) {
         header("Location: ../client/index.php?error=albumnotcreated");
         return;
@@ -25,7 +25,7 @@
     $albums_to_merge = implode(',', $_POST['albums']);
     $album_images_query = "SELECT image_instance_id FROM album_images
     INNER JOIN albums ON albums.id=album_images.album_id
-    WHERE albums.userId=?
+    WHERE albums.user_id=?
     AND albums.id IN ($albums_to_merge);";
 
 
@@ -35,7 +35,7 @@
         return;
     }
 
-    mysqli_stmt_bind_param($album_images_stmt, "i", $_SESSION['userId']);
+    mysqli_stmt_bind_param($album_images_stmt, "i", $_SESSION['user_id']);
     mysqli_stmt_execute($album_images_stmt);
     $images_to_insert = mysqli_stmt_get_result($album_images_stmt);
     

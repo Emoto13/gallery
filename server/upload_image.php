@@ -60,7 +60,7 @@
              $imageInsertStatement, 
              "siss", 
              $path_filename, 
-             $_SESSION['userId'],
+             $_SESSION['user_id'],
              $description,
              $address
         );

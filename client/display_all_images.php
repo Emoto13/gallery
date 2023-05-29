@@ -3,7 +3,7 @@
         require "display_gallery.php";
         require "../server/dbhandler.php";
 
-        if (!isset($_SESSION['userId'])){
+        if (!isset($_SESSION['user_id'])){
             echo "User should be logged to access this page";
             return;
         }
@@ -20,7 +20,7 @@
             return;
         } 
 
-        mysqli_stmt_bind_param($statement, "i", $_SESSION['userId']);
+        mysqli_stmt_bind_param($statement, "i", $_SESSION['user_id']);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
         display_gallery($result);

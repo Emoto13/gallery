@@ -3,7 +3,7 @@
     session_start();
 
     function delete_image($conn=null) {
-        if (!isset($_SESSION['userId'])){
+        if (!isset($_SESSION['user_id'])){
             echo "No logged user found";
             return -1;
         }    
@@ -17,7 +17,7 @@
             return -1;
         }
 
-        mysqli_stmt_bind_param($delete_image_statement, "ii", $_POST['image-id'], $_SESSION['userId']);
+        mysqli_stmt_bind_param($delete_image_statement, "ii", $_POST['image-id'], $_SESSION['user_id']);
         mysqli_stmt_execute($delete_image_statement);
         return mysqli_insert_id($conn);
     }
