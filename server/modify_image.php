@@ -3,7 +3,7 @@
     session_start();
 
     function update_image($conn=null) {
-        if (!isset($_SESSION['userId'])){
+        if (!isset($_SESSION['user_id'])){
             echo "No logged user found";
             return -1;
         }    
@@ -18,7 +18,7 @@
             return -1;
         }
 
-        mysqli_stmt_bind_param($update_statement, "sii",  $_POST['description'], $_POST['image-id'], $_SESSION['userId']);
+        mysqli_stmt_bind_param($update_statement, "sii",  $_POST['description'], $_POST['image-id'], $_SESSION['user_id']);
         mysqli_stmt_execute($update_statement);
         return mysqli_insert_id($conn);
     }

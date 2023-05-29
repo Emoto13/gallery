@@ -1,7 +1,7 @@
 
 <?php    
     session_start();   
-    if (!isset($_SESSION['userId'])){
+    if (!isset($_SESSION['user_id'])){
         echo "No logged user found";
         return;
     }    
@@ -13,7 +13,7 @@
     $configs = new Config();
     $conn = mysqli_connect($configs->SERVER_NAME, $configs->DB_USERNAME, $configs->DB_PASSWORD, $configs->DB_NAME);
 
-    $result = create_album($conn, $_POST['album-name'], $_POST['description'], $_SESSION["userId"]);
+    $result = create_album($conn, $_POST['album-name'], $_POST['description'], $_SESSION["user_id"]);
     if (!$result) {
         header("Location: ../client/index.php?error=albumnotcreated");
         return;

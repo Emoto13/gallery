@@ -39,7 +39,7 @@
                 <select class="modal-form" name="albums[]" id="albums" multiple>
                     <?php
                         
-                        $query = "SELECT * FROM albums WHERE userId=?";
+                        $query = "SELECT * FROM albums WHERE user_id=?";
                         $statement = mysqli_stmt_init($conn);
 
                         if (!mysqli_stmt_prepare($statement, $query)) {
@@ -47,7 +47,7 @@
                             exit();
                         }
                         else {
-                            mysqli_stmt_bind_param($statement, "i", $_SESSION['userId']);
+                            mysqli_stmt_bind_param($statement, "i", $_SESSION['user_id']);
                             mysqli_stmt_execute($statement);
                             $result = mysqli_stmt_get_result($statement);
                             while($row = mysqli_fetch_assoc($result)){
@@ -67,7 +67,7 @@
     <div id="overlay"></div>
 
     <?php
-    if (!isset($_SESSION['userId'])){
+    if (!isset($_SESSION['user_id'])){
         echo "No user logged";
         exit();
     }
@@ -83,7 +83,7 @@
             echo '<p id="album-date-error"> Couldn\'t create album at this time. Please try again later!</p>';
         }
         // List all albums with their names
-        $query = "SELECT * FROM albums WHERE userId=?";
+        $query = "SELECT * FROM albums WHERE user_id=?";
         $statement = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($statement, $query)) {
@@ -91,7 +91,7 @@
             exit();
         }
         else {
-            mysqli_stmt_bind_param($statement, "i", $_SESSION['userId']);
+            mysqli_stmt_bind_param($statement, "i", $_SESSION['user_id']);
             mysqli_stmt_execute($statement);
             $result = mysqli_stmt_get_result($statement);
             echo '<div style="display: grid; grid-template-columns: 20% 20% 20% 20%; grid-gap: 7%;">';
@@ -106,16 +106,16 @@
 
         $query = "
             SELECT * FROM (
-                SELECT album_images.image_instance_id, albums.userId
+                SELECT album_images.image_instance_id, albums.user_id
                 FROM albums
                 INNER JOIN album_images on album_images.album_id=albums.id
-                WHERE albums.userId=? 
+                WHERE albums.user_id=? 
                 AND albums.id=?
             ) as album_images
             INNER JOIN images on images.id=album_images.image_instance_id;
         ";
             
-        //"SELECT * FROM  albums INNER JOIN images on images.author_id=albums.userId WHERE images.author_id=? AND albums.id=?";
+        //"SELECT * FROM  albums INNER JOIN images on images.author_id=albums.user_id WHERE images.author_id=? AND albums.id=?";
         $statement = mysqli_stmt_init($conn);
 
 
@@ -123,7 +123,7 @@
             header("Location: index.php?error=sqlerror");
             exit();
         }
-        mysqli_stmt_bind_param($statement, "ii", $_SESSION['userId'], $_GET['id']);
+        mysqli_stmt_bind_param($statement, "ii", $_SESSION['user_id'], $_GET['id']);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
 

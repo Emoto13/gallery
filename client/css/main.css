@@ -11,5 +11,9 @@ body {
   background-color: white;
   margin: 1em auto;
   padding: 3em;
+  border-radius: 0.5em;
 }
 
+textarea {
+  border-radius: 0.5em;
+}

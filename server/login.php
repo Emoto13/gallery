@@ -30,7 +30,7 @@ if (isset($_POST['login-submit'])){
                 $passwordCheck = password_verify($password, $row['password']);
                 if ($passwordCheck == true) {
                     session_start();
-                    $_SESSION['userId'] = $row['id'];
+                    $_SESSION['user_id'] = $row['id'];
                     $_SESSION['userUsername'] = $row['username'];
 
                     header("Location: ../client/index.php?success=login");

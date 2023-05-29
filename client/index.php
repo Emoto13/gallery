@@ -18,7 +18,7 @@
     }
 
     echo '<main class="container">';
-    if (!isset($_SESSION['userId'])) {
+    if (!isset($_SESSION['user_id'])) {
         echo '<h1>Welcome to Image Gallery!</h1>
             <p>Please log into your profile or register to be able to upload pictures and generate galleries!</p>';
         return;

@@ -1,6 +1,6 @@
 <?php
 
-    function uploadImage($conn = NULL) {
+    function upload_image($conn = NULL) {
         require_once('uuid.php');
         include_once("../config.php");
         $configs = new Config();
@@ -60,7 +60,7 @@
              $imageInsertStatement, 
              "siss", 
              $path_filename, 
-             $_SESSION['userId'],
+             $_SESSION['user_id'],
              $description,
              $address
         );

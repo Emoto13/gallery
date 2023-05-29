@@ -5,7 +5,7 @@
 <main class="container">
     <?php
     
-    if (!isset($_SESSION['userId'])) {
+    if (!isset($_SESSION['user_id'])) {
         echo "You should log in to view this page";
         return;
     }
@@ -22,7 +22,7 @@
         return;
     }
 
-    mysqli_stmt_bind_param($statement_basic_details, "i", $_SESSION['userId']);
+    mysqli_stmt_bind_param($statement_basic_details, "i", $_SESSION['user_id']);
     mysqli_stmt_execute($statement_basic_details);
     $result_basic_details = mysqli_stmt_get_result($statement_basic_details)->fetch_assoc();
     echo '<h1>My Profile Details</h1>';
@@ -41,21 +41,21 @@
     }
 
 
-    mysqli_stmt_bind_param($statement_images_count, "i", $_SESSION['userId']);
+    mysqli_stmt_bind_param($statement_images_count, "i", $_SESSION['user_id']);
     mysqli_stmt_execute($statement_images_count);
     $result_images_count = mysqli_stmt_get_result($statement_images_count)->fetch_array();
     echo '<p> <em>Total image count: </em>'.$result_images_count[0].'</p>';
 
 
     // Fetch uploaded albums info
-    $query_albums_count = "SELECT COUNT(id) FROM albums WHERE userId=?";
+    $query_albums_count = "SELECT COUNT(id) FROM albums WHERE user_id=?";
     $statement_albums_count = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement_albums_count, $query_albums_count)) {
         header("Location: index.php?error=sqlerror");
         return;
     }
     
-    mysqli_stmt_bind_param($statement_albums_count, "i", $_SESSION['userId']);
+    mysqli_stmt_bind_param($statement_albums_count, "i", $_SESSION['user_id']);
     mysqli_stmt_execute($statement_albums_count);
     $result_albums_count = mysqli_stmt_get_result($statement_albums_count)->fetch_array();
     echo '<p> <em>Total album count: </em>'.$result_albums_count[0].'</p>';

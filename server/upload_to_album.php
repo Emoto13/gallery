@@ -6,8 +6,7 @@
     $configs = new Config();
 
     $conn = mysqli_connect($configs->SERVER_NAME, $configs->DB_USERNAME, $configs->DB_PASSWORD, $configs->DB_NAME);
-    $image_id = uploadImage($conn);
-
+    $image_id = upload_image($conn);
     $query_add_image = "INSERT INTO album_images (image_instance_id, album_id) VALUES (?, ?)";
     $statement_add_image = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement_add_image, $query_add_image)) {
