@@ -12,6 +12,7 @@
   background-color: white;
   width: 20em;
   max-width: 60%;
+  border-radius: 0.5em;
 }
 
 #create-modal {
@@ -23,7 +24,7 @@
 }
 
 #upload-modal {
-  height: 16em;
+  height: 11em;
 }
 
 .delete-modal {
@@ -35,6 +36,7 @@
 }
 
 .modal-header {
+  border-radius: 0.5em;
   background-color: #003e8f;
   padding: 10px 15px;
   display: flex;
@@ -97,6 +99,7 @@
     height: 25px;
     margin-bottom: 7px;
     border: solid 1px #999;
+    border-radius: 0.5em;
 }
 
 #album-creation-form #albums {
@@ -113,6 +116,7 @@
     height: 25px;
     margin-bottom: 7px;
     border: solid 1px #999;
+    border-radius: 0.5em;
 }
 
 #modify-details-form #description {
