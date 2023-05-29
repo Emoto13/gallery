@@ -52,8 +52,10 @@
             $id = $row['id'];
             
             echo '<img class="small-image" onclick="openGalleryModal(); currentSlide('.($picture_index + 1).')" src="../server/images/'.$row['path'].'">
-                <img class="delete" onclick="openDeleteModal('.$id.')" src="./images/delete.png">
-                <img class="modify" onclick="openModifyModal('.$id.')" src="./images/modify.png">';
+                <div class="image-options">
+                    <img class="delete" onclick="openDeleteModal('.$id.')" src="./images/delete.png">
+                    <img class="modify" onclick="openModifyModal('.$id.')" src="./images/modify.png">
+                </div>';
 
             $picture_data = '';
             
@@ -67,7 +69,7 @@
                 $picture_data .= ' Description: '.$row['description'].'<br />';
             }
             if(!empty($id)) {
-                create_modify_modal($id, );
+                create_modify_modal($id, $row['description']);
                 create_delete_modal($id);
             }
             
