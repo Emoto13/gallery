@@ -19,12 +19,12 @@
 
     echo '<main class="container">';
     if (!isset($_SESSION['user_id'])) {
-        echo '<h1>Welcome to Image Gallery!</h1>
+        echo '<h1>Welcome to Welcome to Web Gallery!</h1>
             <p>Please log into your profile or register to be able to upload pictures and generate galleries!</p>';
         return;
     }
 
-    echo '<h1>Welcome to your own Image Gallery!</h1>
+    echo '<h1>Welcome to Web Gallery!</h1>
         <p>You can now upload new images or view your existing ones. :)</p>';
     echo '<form action="../server/upload.php" method="POST" enctype="multipart/form-data">
               <input type="file" name="file" required style="margin:20px 0px;"/>
