@@ -40,7 +40,7 @@
                 <?php
                     if (isset($_SESSION['user_id'])) {
                         echo '<li><a href="albums.php"><img src="images/album.png" class="icon" alt=Album></a></li>
-                        <li><a href="all_images.php"><img src="images/all_images.jpg" class="icon" alt="All images"></a></li>
+                        <li><a href="all_images.php"><img src="images/all_images.jpg" class="icon" alt="Collection"></a></li>
                         <li><a href="profile.php"><img src="images/profile_icon.png" class="icon"  alt=Profile></a></li>
                         <li id="inline-login">';
                         

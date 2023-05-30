@@ -5,7 +5,7 @@
 <script defer src="js/validate_album_creation.js"></script>
 <main class="container">
     <div class="flex">
-        <h1 id="albums-title" class="inline-flex">My Albums</h1>
+        <h1 id="albums-title" class="inline-flex">Albums</h1>
         <div class="inline-flex">
             <button onclick="openModal()" class="form-button" id="create-album-btn">Create new album</button>
             <button onclick="openMergeModal()" class="form-button" id="merge-album-btn">Merge existing
@@ -97,7 +97,7 @@
             echo '<div style="display: grid; grid-template-columns: 20% 20% 20% 20%; grid-gap: 7%;">';
             while($row = mysqli_fetch_assoc($result)){
                 echo '<flex style="text-align: center;"><a class="album-name" href="?id='.$row['id'].'&name='.$row['name'].'"><img
-                class="folder" src="./images/folder.png" /><p>'.$row['name'].'</p></a></flex> ';
+                class="folder" src="./images/folder.jpg" /><p>'.$row['name'].'</p></a></flex> ';
             }
             echo '</div>';
         }

@@ -25,7 +25,7 @@
     mysqli_stmt_bind_param($statement_basic_details, "i", $_SESSION['user_id']);
     mysqli_stmt_execute($statement_basic_details);
     $result_basic_details = mysqli_stmt_get_result($statement_basic_details)->fetch_assoc();
-    echo '<h1>My Profile Details</h1>';
+    echo '<h1>Profile information:</h1>';
     echo '<p> <em>Username: </em>'.$result_basic_details['username'].'</p>';
     echo '<p> <em>Email: </em>'.$result_basic_details['email'].'</p>';
     echo '<p> <em>Member since: </em>'.date('F d, Y', strtotime($result_basic_details['date_registered'])).'</p>';
