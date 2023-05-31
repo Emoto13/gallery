@@ -35,3 +35,7 @@ body {
 textarea {
   border-radius: 0.5em;
 }
+
+.center {
+  text-align: center;
+}
