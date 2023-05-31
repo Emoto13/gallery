@@ -35,7 +35,7 @@
         mysqli_stmt_execute($statement_basic_details);
         $result_basic_details = mysqli_stmt_get_result($statement_basic_details)->fetch_assoc();
         
-        echo '<h1>My Profile Information:</h1>';
+        echo '<h1 class="profile-header">My Profile</h1>';
 
         echo '<img src="images/profile_picture.png" class="profile-picture" alt="Picture">';
         
