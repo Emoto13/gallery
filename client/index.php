@@ -31,7 +31,7 @@
 
     echo '<main class="container">';
     echo '<h1 class="center">Welcome to Web Gallery!</h1>';
-    echo '<p>You can now upload new images or view your existing ones. :)</p>';
+    echo '<p>You can upload image here.</p>';
     echo '<form action="../server/upload.php" method="POST" enctype="multipart/form-data">
               <input type="file" name="file" required style="margin:20px 0px;"/>
               <div>
