@@ -17,13 +17,18 @@
         }
     }
 
-    echo '<main class="container">';
     if (!isset($_SESSION['user_id'])) {
-        echo '<h1>Welcome to Welcome to Web Gallery!</h1>
-            <p>Please log into your profile or register to be able to upload pictures and generate galleries!</p>';
+        echo '<main class="index-container">';
+        echo '<h1>Welcome to Web Gallery!</h1>
+            <p>Please log into your profile or register to be able to upload pictures and create collections!</p>
+            <img src="images/index.jpg" class="index-img" alt="Index photo" />
+            <img src="images/index-phone.png" class="index-img" alt="Index phone photo" />
+
+            ';
         return;
     }
 
+    echo '<main class="container">';
     echo '<h1>Welcome to Web Gallery!</h1>
         <p>You can now upload new images or view your existing ones. :)</p>';
     echo '<form action="../server/upload.php" method="POST" enctype="multipart/form-data">

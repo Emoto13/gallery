@@ -14,6 +14,24 @@ body {
   border-radius: 0.5em;
 }
 
+.index-container {
+  width: 48%;
+  overflow: auto;
+  background-color: white;
+  margin: 1em auto;
+  padding: 3em;
+  border-radius: 0.5em;
+  position: absolute;
+  top: 15%;
+  left: 23%;
+}
+
+.index-img {
+  width: 45%;
+  position: relative;
+  left: 5%;
+}
+
 textarea {
   border-radius: 0.5em;
 }
