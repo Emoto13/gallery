@@ -7,9 +7,8 @@
     <div class="flex">
         <h1 id="albums-title" class="inline-flex">Albums</h1>
         <div class="inline-flex">
-            <button onclick="openModal()" class="form-button" id="create-album-btn">Create new album</button>
-            <button onclick="openMergeModal()" class="form-button" id="merge-album-btn">Merge existing
-                albums</button>
+            <button onclick="openModal()" class="form-button" id="create-album-btn">Create album</button>
+            <button onclick="openMergeModal()" class="form-button" id="merge-album-btn">Merge albums</button>
         </div>
     </div>
     <div class="modal" id="create-modal">
