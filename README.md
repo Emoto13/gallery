@@ -6,8 +6,6 @@ Harut Partamian FN. 62560
 # WEB Gallery
 
 This is an image gallery project for the FMI WEB course.
-The main idea is to have a web page with user registration and login. Each user is able to save his images on the page.
-There are options for uploading images, splitting images into albums (also automatically on some criteria), merging albums, and deleting images/albums.
 
 - Install XAMPP
 - Pull this repository
@@ -33,5 +31,5 @@ password: password123
 2. Install XAMPP from the official website [more info here](https://www.apachefriends.org/download.html)
 3. Run SQL server and Apache server from XAMPP
 4. Clone this repository into (XAMPP directory)/htdocs
-5. Source "web_gallery.sql" into your MySQL instance. (You might need to update "config.php" according to your instance e.g username, password, image directory etc.)
+5. Source "setup_tables.sql" into your MySQL instance. (You might need to update "config.php" according to your instance e.g username, password, image directory etc.)
 6. Open http://localhost/gallery/client/index.php and you should be able to see the project in your browser
