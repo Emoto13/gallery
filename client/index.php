@@ -25,7 +25,6 @@
             <p class="center">Please log into your profile or register to be able to upload pictures and create collections!</p>
             <img src="images/index.jpg" class="index-img" alt="Index photo" />
             <img src="images/index-phone.png" class="index-img" alt="Index phone photo" />
-
             ';
         return;
     }

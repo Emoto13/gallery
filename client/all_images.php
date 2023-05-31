@@ -3,7 +3,7 @@
 ?>
 
 <main class="container">
-    <h1>Collection</h1>
+    <h1 class="center">Collection</h1>
     <div class="gallery">
     <?php
         include_once("get_images.php");
