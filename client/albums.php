@@ -7,8 +7,21 @@
     <div class="flex">
         <h1 id="albums-title" class="inline-flex">Albums</h1>
         <div class="inline-flex">
+            <button onclick="openBulkUploadModal()" class="form-button" id="upload-bulk-btn">Upload bulk</button>
             <button onclick="openModal()" class="form-button" id="create-album-btn">Create album</button>
             <button onclick="openMergeModal()" class="form-button" id="merge-album-btn">Merge albums</button>
+        </div>
+    </div>
+    <div class="modal" id="upload-bulk-modal">
+        <div class="modal-header">
+            <div class="title">Upload archive</div>
+            <span class="close" id="basic-modal" onclick="closeBulkUploadModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="upload-bulk-form" method="post" action="../server/upload_zip.php" enctype="multipart/form-data">
+                <input class="modal-form" required type="file" name="zip" id="zip" />  
+                <input class="form-button" type="submit" value="Upload">
+            </form>
         </div>
     </div>
     <div class="modal" id="create-modal">
@@ -114,7 +127,6 @@
             INNER JOIN images on images.id=album_images.image_instance_id;
         ";
             
-        //"SELECT * FROM  albums INNER JOIN images on images.author_id=albums.user_id WHERE images.author_id=? AND albums.id=?";
         $statement = mysqli_stmt_init($conn);
 
 

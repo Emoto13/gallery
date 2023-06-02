@@ -14,11 +14,27 @@ function openModal() {
   overlay.classList.add("active");
 }
 
+
 function closeModal() {
   document.getElementById("create-modal").style.transform =
     "translate(-50%, -50%) scale(0, 0)";
   overlay.classList.remove("active");
 }
+
+
+function openBulkUploadModal() {
+  document.getElementById("upload-bulk-modal").style.transform =
+    "translate(-50%, -50%) scale(1, 1)";
+  overlay.classList.add("active");
+}
+
+
+function closeBulkUploadModal() {
+  document.getElementById("upload-bulk-modal").style.transform =
+    "translate(-50%, -50%) scale(0, 0)";
+  overlay.classList.remove("active");
+}
+
 
 function openMergeModal() {
   document.getElementById("merge-modal").style.transform =

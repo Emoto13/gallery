@@ -2,7 +2,8 @@
 #merge-modal,
 #upload-modal,
 .delete-modal,
-#modify-modal {
+#modify-modal,
+#upload-bulk-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -21,6 +22,10 @@
 
 #merge-modal {
   height: 23em;
+}
+
+#upload-bulk-modal {
+  height: 40%;
 }
 
 #upload-modal {
