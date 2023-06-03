@@ -1,27 +1,27 @@
 <?php
-
-    function upload_image($conn = NULL) {
-        require_once('uuid.php');
-        include_once("../config.php");
-        $configs = new Config();
-        
+    function validate_upload($conn = NULL, $originalFilename = "", $fileTmpName = "") {
         if (!isset($_POST['submit'])){
             header("Location: ../client/index.php?error=sqlerror3");
-            exit();
+            return false;
         }
-
-
+    
         $file = $_FILES['file'];
         $originalFilename = $file['name'];
         $fileTmpName = $file['tmp_name'];
         $fileError = $file['error'];
-
+    
         if ($fileError !== 0) {
             echo "There was an error uploading your file.";
-            exit();
+            return false;
         }
+        return array($originalFilename, $fileTmpName);
+    }
 
-
+    function upload_image($conn = NULL, $originalFilename = "", $fileTmpName = "", $exists_on_server = false) {
+        require_once('uuid.php');
+        include_once("../config.php");
+        $configs = new Config();
+ 
         $path = pathinfo($originalFilename);
 	    $filename = $path['filename'];
 	    $ext = $path['extension'];
@@ -30,7 +30,11 @@
 
         $path_filename = $uniqueFilename.".".$ext;
         $full_path = $configs->IMAGE_DIR_PATH.$path_filename;
-        move_uploaded_file($fileTmpName, $full_path);
+        if ($exists_on_server) {
+            rename($fileTmpName, $full_path);
+        } else {
+            move_uploaded_file($fileTmpName, $full_path);
+        }
 
         // Parse the meta and exif data from image
         $exif = exif_read_data($full_path);

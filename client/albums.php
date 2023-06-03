@@ -155,7 +155,28 @@
                     </form>
                 </div>
              </div>';
-        echo '<img class="add" onclick="openUploadModal()" src="./images/add.png"><br>';
+        echo '<img class="add" onclick="openUploadModal()" src="./images/add.png" /><br>';
+
+        echo '<img class="download-icon" onclick="openDownloadModal()" src="./images/download.jpg" /><br>';
+
+        echo '<div id="download-modal">
+                <div class="modal-header">
+                    <div class="title">Download album</div>
+                    <span class="close" id="basic-modal" onclick="closeDownloadModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form action="../server/download_album.php?id='.$album_id.'&name='.$album_name.'"
+                    method="POST" enctype="multipart/form-data">
+                        <label>Are you sure you want to download this album?</label>
+                        <input type="submit" class="form-button yes-btn" value="Yes" </input>
+                        <div>
+                            <button type="button" onclick="closeDownloadModal()" class="form-button no-btn">No</button>
+                        </div>
+                    </form>
+                </div>
+              </div>';
+        
+
         require "display_gallery.php";
         display_gallery($result);
 

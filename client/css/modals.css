@@ -3,7 +3,8 @@
 #upload-modal,
 .delete-modal,
 #modify-modal,
-#upload-bulk-modal {
+#upload-bulk-modal,
+#download-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -31,6 +32,11 @@
 #upload-modal {
   height: 11em;
 }
+
+#download-modal {
+  height: 9.5em;
+}
+
 
 .delete-modal {
     height: 11.5em;
@@ -126,4 +132,35 @@
 
 #modify-details-form #description {
   height: 60px;
+}
+
+.download-btn {
+  background-image: url("images/download.jpg");
+  background-color: transparent; /* make the button transparent */
+  background-repeat: no-repeat;  /* make the background image appear only once */
+  background-position: 0px 0px;  /* equivalent to 'top left' */
+  border: none;           /* assuming we don't want any borders */
+  cursor: pointer;        /* make the cursor like hovering over an <a> element */
+  height: 16px;           /* make this the size of your image */
+  padding-left: 16px;     /* make text start to the right of the image */
+}
+
+.yes-btn {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+
+.no-btn {
+  position: absolute;
+  bottom: 5%;
+  right: 30%;
+  background-color: red;
+}
+
+.download-icon {
+  width: 5%;
+  position: absolute;
+  top: 28.5%;
+  left: 20%;
 }

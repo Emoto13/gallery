@@ -21,6 +21,19 @@ function closeModal() {
   overlay.classList.remove("active");
 }
 
+function openDownloadModal() {
+  document.getElementById("download-modal").style.transform =
+    "translate(-50%, -50%) scale(1, 1)";
+  overlay.classList.add("active");
+}
+
+
+function closeDownloadModal() {
+  document.getElementById("download-modal").style.transform =
+    "translate(-50%, -50%) scale(0, 0)";
+  overlay.classList.remove("active");
+}
+
 
 function openBulkUploadModal() {
   document.getElementById("upload-bulk-modal").style.transform =
